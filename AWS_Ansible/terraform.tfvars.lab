@@ -1,0 +1,13 @@
+aws_region        = "us-west-2"
+project_name      = "AWS-Module"
+ami_id            = "ami-0ecb62995f68bb549"
+key_name          = "Terraform_SSH" 
+allowed_ssh_cidr  = "4.38.108.50/32"
+
+vpc_cidr           = "10.10.0.0/16"
+public_subnet_cidr = "10.10.1.0/24"
+az                 = "us-west-2a"
+
+instance_type  = "t2.micro"
+instance_count = 2
+
