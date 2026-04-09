@@ -15,6 +15,8 @@ The result is a **highly available, load-balanced web service** running across m
 
 ##  Architecture
 
+![Diagram of project](Diagram.png)
+
 Internet
 │
 ▼
@@ -50,27 +52,25 @@ Docker Containers (Web App)
 
 ##  Project Structure
 
-Terraform_Ansible/
+---bash
+├── Ansible
+│   ├── ansible.cfg
+│   ├── group_vars
+│   │   └── all.yaml
+│   ├── inventory
+│   │   └── aws_ec2.yaml
+│   ├── playbooks
+│   │   ├── bootstrap.yaml
+│   │   ├── index.html
+│   │   └── logos.png
+│   └── requirements.txt
 ├── README.md
-├── .gitignore
-├── Terraform/
-│ ├── main.tf
-│ ├── variables.tf
-│ ├── outputs.tf
-│ └── provider.tf
-└── Ansible/
-├── ansible.cfg
-├── requirements.txt
-├── group_vars/
-│ └── all.yml
-├── inventory/
-│ └── aws_ec2.yml
-└── playbooks/
-├── bootstrap.yml
-├── index.html
-└── logos.png
-
-
+└── Terraform
+    ├── main.tf
+    ├── outputs.tf
+    ├── provider.tf
+    ├── README.md
+    └── variables.tf
 ---
 
 ##  Deployment Instructions
