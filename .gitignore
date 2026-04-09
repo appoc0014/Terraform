@@ -1,0 +1,46 @@
+# --- Terraform ---
+# Local .terraform directory (contains provider binaries and modules)
+.terraform/
+
+# .tfstate files (can contain secrets; use remote state instead)
+*.tfstate
+*.tfstate.*
+
+# Variables files (often contain sensitive data)
+*.tfvars
+*.tfvars.json
+
+# Local-only override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CLI configuration and crash logs
+.terraformrc
+terraform.rc
+crash.log
+
+# --- Ansible ---
+# Retry files (created when a playbook fails)
+*.retry
+
+# Ansible-lint cache
+.cache/
+.ansible-lint
+
+# Local vault password files (NEVER commit these)
+.vault_pass
+
+# --- Python Virtual Environment (venv) ---
+# Common names for virtual environments
+venv/
+.venv/
+env/
+.env/
+bin/
+lib/
+share/
+include/
+pyvenv.cfg
+
