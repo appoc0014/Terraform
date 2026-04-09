@@ -52,26 +52,7 @@ Docker Containers (Web App)
 
 ##  Project Structure
 
----bash
-├── Ansible
-│   ├── ansible.cfg
-│   ├── group_vars
-│   │   └── all.yaml
-│   ├── inventory
-│   │   └── aws_ec2.yaml
-│   ├── playbooks
-│   │   ├── bootstrap.yaml
-│   │   ├── index.html
-│   │   └── logos.png
-│   └── requirements.txt
-├── README.md
-└── Terraform
-    ├── main.tf
-    ├── outputs.tf
-    ├── provider.tf
-    ├── README.md
-    └── variables.tf
----
+![File Structure of project](Files.png)
 
 ##  Deployment Instructions
 
