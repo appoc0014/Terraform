@@ -1,0 +1,85 @@
+# This Ansible playbook with get 3 VM servers ready for web hosting with Docker and NGINX
+# Install Docker on three VM's
+- name: Configure EC2 instances for web hosting
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install prerequisites
+      apt:
+        name:
+          - ca-certificates
+          - curl
+          - gnupg
+          - software-properties-common
+        state: present
+
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu focal stable
+        state: present
+
+    - name: Install Docker
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        state: present
+        update_cache: yes
+
+    - name: Start Docker
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Add ubuntu user to docker group
+      user:
+        name: ubuntu
+        groups: docker
+        append: yes
+
+    - name: Check target directory exists
+      ansible.builtin.file:
+        path: /opt/nginx/html
+        state: directory
+        mode: '0755'
+
+    - name: Upload html file
+      ansible.builtin.copy:
+        src: index.html
+        dest: /opt/nginx/html/index.html
+        mode: '0644'
+
+    - name: Upload png file
+      ansible.builtin.copy:
+        src: logos.png
+        dest: /opt/nginx/html/logos.png
+        mode: '0644'
+
+    - name: Run NGINX container
+      community.docker.docker_container:
+        name: my-nginx
+        image: nginx:latest
+        state: started
+        restart_policy: always
+        ports:
+          - "80:80"
+        volumes:
+          - /opt/nginx/html:/usr/share/nginx/html:ro
+
+  handlers:
+    - name: Restart Nginx
+      systemd:
+        name: nginx
+        state: restarted
