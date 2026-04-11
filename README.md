@@ -98,6 +98,8 @@ Open in browser:
 
 http://<alb_dns_name>
 
+![HTML Page](Page_Result.png)
+
  Security Design
 ALB allows inbound traffic from the internet (port 80/443)
 EC2 instances:
