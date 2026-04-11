@@ -11,6 +11,10 @@ This project demonstrates a complete **DevOps workflow** using Infrastructure as
 
 The result is a **highly available, load-balanced web service** running across multiple EC2 instances.
 
+HTML page as final result of project from browser.
+
+![Final Result Page](Page_Result.png)
+
 ---
 
 ##  Architecture
@@ -97,8 +101,6 @@ Deploy the web application
 Open in browser:
 
 http://<alb_dns_name>
-
-![HTML Page](Page_Result.png)
 
  Security Design
 ALB allows inbound traffic from the internet (port 80/443)
